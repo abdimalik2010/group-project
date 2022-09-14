@@ -1,3 +1,4 @@
+---
 version: '3'
 services:
   # Self-hosted docker registry
@@ -34,7 +35,19 @@ services:
       - 127.0.0.1:3000:3000
     container_name: grafana
     restart: always
+    network_mode: host
     depends_on:
       - prometheus
     volumes:
       - './grafana.ini/etc/grafana/grafana.ini'
+  # Onedev
+  onedev:
+    image: 1dev/server
+    network_mode: host
+    volumes:
+      - ./volumes/onedev_data:/opt/onedev
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 127.0.0.1:6610:6610
+      - 127.0.0.1:6611:6611
+
