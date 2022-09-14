@@ -2,6 +2,7 @@
 - Private Docker Registry
 - Prometheus
 - Grafana
+- Onedev
 ```
 Docker-compose -f docker-compose.yaml up -d
 ```
